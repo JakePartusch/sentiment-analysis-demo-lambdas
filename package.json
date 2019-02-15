@@ -1,0 +1,29 @@
+{
+  "name": "sentiment-analysis-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "precommit": "pretty-quick --staged",
+    "prettier": "prettier --write 'src/**/*.ts'",
+    "deploy": "cd dist &&  npm install --production  && serverless deploy",
+    "build": "parcel build src/handler.ts --target=node && cp serverless.yml dist && cp package.json dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.402.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.19",
+    "@types/node": "^11.9.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "husky": "^1.0.0-rc.15",
+    "jest": "^24.1.0",
+    "parcel-bundler": "^1.9.7",
+    "prettier": "^1.16.4",
+    "pretty-quick": "^1.10.0",
+    "typescript": "^3.3.3"
+  }
+}
