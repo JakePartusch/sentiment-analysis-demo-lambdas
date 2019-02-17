@@ -36,7 +36,9 @@ module.exports.handleJournalSentimentLex = async event => {
   const data = await comprehend.detectSentiment(params).promise();
 
   const responseMessage =
-    data.Sentiment === "POSITIVE" ? "That's great!" : "Darn. That's too bad";
+    data.Sentiment === "POSITIVE"
+      ? "That's great! I'm glad to hear it!"
+      : "That's too bad. I'm sorry to hear that.";
 
   const response = {
     sessionAttributes: {},
@@ -45,7 +47,7 @@ module.exports.handleJournalSentimentLex = async event => {
       fulfillmentState: "Fulfilled",
       message: {
         contentType: "SSML",
-        content: `<speak>${responseMessage}</speak>`
+        content: `<speak>${responseMessage} <break time="1s"/> Be sure to check in again tomorrow! <break time="1s"/> Goodbye. <break time="1s"/></speak>`
       }
     }
   };
